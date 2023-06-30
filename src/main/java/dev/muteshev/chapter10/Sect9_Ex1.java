@@ -1,0 +1,23 @@
+package dev.muteshev.chapter10;
+
+import java.util.Comparator;
+import java.util.TreeMap;
+
+import static dev.muteshev.chapter10.Sect1_Ex1.removeVowels;
+public class Sect9_Ex1 
+{
+    public static void main(String[] args)
+    {
+        Comparator<String> byConsonants = (x,y) ->
+                removeVowels(x).compareTo(removeVowels(y));
+
+        TreeMap<String,String> pets = new TreeMap<>(byConsonants);
+
+        pets.put("gerbil", "small cute rodents");
+        pets.put("guinea pig", "rodents, not pigs");
+        pets.put("cat", "have nine lives");
+        pets.put("chicken", "more populous than people");
+
+        pets.forEach((x,y) -> System.out.println(x + ", " + y));
+    }
+}
